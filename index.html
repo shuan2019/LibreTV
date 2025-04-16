@@ -248,6 +248,29 @@
         </div>
     </div>
 
+    <!-- 密码验证模态框 -->
+    <div id="passwordModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#222] p-6 rounded-lg w-80">
+            <h3 class="text-xl font-bold mb-4">密码验证</h3>
+            <input 
+                type="password" 
+                id="passwordInput"
+                class="w-full bg-[#333] text-white px-4 py-2 rounded mb-4"
+                placeholder="请输入访问密码"
+            >
+            <div class="flex justify-end space-x-3">
+                <button 
+                    onclick="document.getElementById('passwordModal').classList.add('hidden')"
+                    class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded"
+                >取消</button>
+                <button 
+                    onclick="handlePasswordSubmit()"
+                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded"
+                >确认</button>
+            </div>
+        </div>
+    </div>
+
     <!-- 错误提示框 -->
     <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 opacity-0 -translate-y-full">
         <p id="toastMessage"></p>
@@ -281,5 +304,17 @@
     <script src="js/ui.js"></script>
     <script src="js/api.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        function handlePasswordSubmit() {
+            const input = document.getElementById('passwordInput');
+            if(input.value === 'yykkxx') {
+                document.getElementById('passwordModal').classList.add('hidden');
+                toggleSettings();
+            } else {
+                alert('密码错误，访问被拒绝！');
+                input.value = '';
+            }
+        }
+    </script>
 </body>
 </html>
