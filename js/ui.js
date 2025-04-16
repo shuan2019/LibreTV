@@ -1,7 +1,13 @@
 // UI相关函数
 function toggleSettings(e) {
-    // 阻止事件冒泡，防止触发document的点击事件
     e && e.stopPropagation();
+    
+    const password = prompt('请输入访问密码：');
+    if (password !== 'yykkxx') {
+        alert('密码错误，访问被拒绝！');
+        return;
+    }
+    
     const panel = document.getElementById('settingsPanel');
     panel.classList.toggle('show');
 }
